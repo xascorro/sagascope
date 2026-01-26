@@ -1,0 +1,35 @@
+/* LOTR Theme */
+:root {
+    --text-primary: #fffce1;
+    /* Parchment/Light Gold */
+    --text-secondary: #a3cfa3;
+    /* Elven Greenish */
+    --accent-color: #4a6741;
+    /* Forest Green */
+    --glass-bg: rgba(20, 30, 20, 0.85);
+    --glass-border: rgba(212, 175, 55, 0.3);
+    /* Gold Tint */
+    --font-ui: 'Sorts Mill Goudy', serif;
+    --font-read: 'Garamond', serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy:wght@400&display=swap');
+
+h1,
+h2 {
+    font-family: 'Sorts Mill Goudy', serif;
+    font-style: italic;
+    color: #ffd700;
+}
+
+button {
+    background: #4a6741;
+    border: 1px solid #ffd700;
+    font-family: 'Sorts Mill Goudy', serif;
+}
+
+.glass-panel {
+    border-radius: 4px;
+    /* More rustic/ancient feel */
+    border: 2px double #556b2f;
+}

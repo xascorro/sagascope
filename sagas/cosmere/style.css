@@ -1,0 +1,27 @@
+/* Cosmere Theme */
+:root {
+    --text-primary: #e6eefb;
+    --text-secondary: #8b949e;
+    --accent-color: #58a6ff;
+    /* Stormlight Blue */
+    --font-ui: 'Inter', system-ui, sans-serif;
+    --font-read: 'Merriweather', serif;
+    --glass-bg: rgba(13, 17, 23, 0.7);
+    --glass-border: rgba(56, 139, 253, 0.3);
+}
+
+body {
+    /* Background set by JS logic referencing assets/bg.png */
+}
+
+h1,
+h2 {
+    color: #a371f7;
+    /* Void/Storm mix */
+    text-shadow: 0 0 10px rgba(163, 113, 247, 0.5);
+}
+
+button {
+    background: linear-gradient(135deg, #1f6feb, #58a6ff);
+    box-shadow: 0 0 15px rgba(31, 111, 235, 0.3);
+}

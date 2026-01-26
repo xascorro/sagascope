@@ -1,0 +1,41 @@
+/* Dune Theme */
+:root {
+    --text-primary: #f0e6d2;
+    /* Sand/Beige */
+    --text-secondary: #cba34f;
+    /* Spice Gold */
+    --accent-color: #0088ff;
+    /* Ibad Eyes Blue */
+    --glass-bg: rgba(40, 30, 20, 0.85);
+    /* Dark sand shadow */
+    --glass-border: rgba(200, 150, 50, 0.3);
+    --font-ui: 'Orbitron', system-ui, sans-serif;
+    /* Futurisic */
+    --font-read: 'Georgia', serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+h1,
+h2,
+button {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+}
+
+h1 {
+    color: #ffd700;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+button {
+    background: #000;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    box-shadow: 0 0 10px rgba(0, 136, 255, 0.3);
+}
+
+button:hover {
+    background: var(--accent-color);
+    color: #fff;
+}

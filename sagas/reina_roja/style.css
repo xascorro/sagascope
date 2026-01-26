@@ -1,0 +1,47 @@
+/* Reina Roja Theme */
+:root {
+    --text-primary: #ededed;
+    --text-secondary: #ff3333;
+    /* Red accents */
+    --accent-color: #ff0000;
+    /* Pure Red */
+    --glass-bg: rgba(0, 0, 0, 0.9);
+    --glass-border: rgba(255, 0, 0, 0.5);
+    --font-ui: 'Segoe UI', Roboto, Helvetica, sans-serif;
+    /* Modern, clean */
+    --font-read: 'Roboto', sans-serif;
+    /* Sans-serif for thriller vibe */
+}
+
+h1,
+h2,
+button {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 800;
+}
+
+h1 {
+    color: #fff;
+    border-bottom: 2px solid var(--accent-color);
+    display: inline-block;
+}
+
+button {
+    background: #000;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+}
+
+button:hover {
+    background: var(--accent-color);
+    color: #000;
+}
+
+.glass-panel {
+    border-radius: 0;
+    /* Sharp edges */
+    border: 1px solid #333;
+    border-left: 4px solid var(--accent-color);
+}

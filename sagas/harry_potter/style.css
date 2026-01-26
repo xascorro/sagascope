@@ -1,0 +1,35 @@
+/* Harry Potter Theme */
+:root {
+    --text-primary: #ffc500;
+    /* Gold */
+    --text-secondary: #c0c0c0;
+    --accent-color: #740001;
+    /* Gryffindor Red/Dark */
+    --glass-bg: rgba(10, 10, 15, 0.85);
+    --glass-border: rgba(116, 0, 1, 0.4);
+    --font-ui: 'Cinzel', serif;
+    /* Magical vibe if available, else serif */
+    --font-read: 'Crimson Text', serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Crimson+Text:wght@400;600&display=swap');
+
+h1,
+h2 {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 2px;
+    text-shadow: 0 0 5px #ffc500;
+}
+
+button {
+    background: linear-gradient(to bottom, #740001, #4a0000);
+    border: 1px solid #d3a625;
+    color: #ffc500;
+    font-family: 'Cinzel', serif;
+}
+
+.glass-panel {
+    border: 1px solid #d3a625;
+    /* Gold border */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}

@@ -1,0 +1,39 @@
+/* Hunger Games Theme */
+:root {
+    --text-primary: #fff;
+    --text-secondary: #f39c12;
+    /* Fire Orange */
+    --accent-color: #e67e22;
+    /* Burnt Orange */
+    --glass-bg: rgba(20, 20, 20, 0.9);
+    --glass-border: rgba(230, 126, 34, 0.5);
+    --font-ui: 'Impact', 'Arial Black', sans-serif;
+    /* Bold propaganda style */
+    --font-read: 'Courier New', monospace;
+    /* Typewriter/survival vibe */
+}
+
+h1,
+h2 {
+    font-family: var(--font-ui);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+h1 {
+    color: #f39c12;
+    text-shadow: 0 0 10px #e67e22;
+}
+
+button {
+    background: #333;
+    border: 2px solid #e67e22;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #e67e22;
+    color: #000;
+}
