@@ -6,7 +6,7 @@ window.SagaContent = {
         { title: { es: "Dune", en: "Dune" }, words: 188000 },
         { title: { es: "El Mesías de Dune", en: "Dune Messiah" }, words: 60000 },
         { title: { es: "Hijos de Dune", en: "Children of Dune" }, words: 147000 },
-        { title: { es: "Dios Emperador de Dune", en: "God Emperor of Dune" }, words: 137000 },
+        { title: { es: "Dios Emperador de Dune", en: "God Emperor of Dune" }, words: 250000 },
         { title: { es: "Herejes de Dune", en: "Heretics of Dune" }, words: 164000 },
         { title: { es: "Casa Capitular Dune", en: "Chapterhouse: Dune" }, words: 145000 }
     ],

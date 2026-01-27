@@ -5,8 +5,8 @@ window.SagaContent = {
     books: [
         { title: { es: "Los Juegos del Hambre", en: "The Hunger Games" }, words: 99750 },
         { title: { es: "En Llamas", en: "Catching Fire" }, words: 101564 },
-        { title: { es: "Sinsajo", en: "Mockingjay" }, words: 102138 },
-        { title: { es: "Balada de Pájaros Cantores y Serpientes", en: "The Ballad of Songbirds and Snakes" }, words: 157000 }
+        { title: { es: "Sinsajo", en: "Mockingjay" }, words: 100269 },
+        { title: { es: "Balada de Pájaros Cantores y Serpientes", en: "The Ballad of Songbirds and Snakes" }, words: 140478 }
     ],
     fragments: {
         es: [

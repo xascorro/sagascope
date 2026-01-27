@@ -9,7 +9,8 @@ window.SagaContent = {
         { title: { es: "El Cáliz de Fuego", en: "The Goblet of Fire" }, words: 190637 },
         { title: { es: "La Orden del Fénix", en: "The Order of the Phoenix" }, words: 257045 },
         { title: { es: "El Misterio del Príncipe", en: "The Half-Blood Prince" }, words: 168923 },
-        { title: { es: "Las Reliquias de la Muerte", en: "The Deathly Hallows" }, words: 198227 }
+        { title: { es: "Las Reliquias de la Muerte", en: "The Deathly Hallows" }, words: 198227 },
+        { title: { es: "El Legado Maldito (Guion)", en: "The Cursed Child" }, words: 45000 }
     ],
     fragments: {
         es: [

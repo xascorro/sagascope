@@ -7,7 +7,7 @@ window.SagaContent = {
         { title: { es: "La Comunidad del Anillo", en: "The Fellowship of the Ring" }, words: 187790 },
         { title: { es: "Las Dos Torres", en: "The Two Towers" }, words: 156198 },
         { title: { es: "El Retorno del Rey", en: "The Return of the King" }, words: 137115 },
-        { title: { es: "El Silmarillion", en: "The Silmarillion" }, words: 130000 }
+        { title: { es: "El Silmarillion", en: "The Silmarillion" }, words: 130115 }
     ],
     fragments: {
         es: [

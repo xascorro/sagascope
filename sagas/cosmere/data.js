@@ -3,12 +3,29 @@ window.SagaContent = {
     id: 'cosmere',
     names: { es: 'El Cosmere', en: 'The Cosmere' },
     books: [
-        { title: { es: "El Aliento de los Dioses", en: "Warbreaker" }, words: 200000 },
+        { title: { es: "Nacidos de la Bruma: El Imperio Final", en: "Mistborn: The Final Empire" }, words: 211959 },
+        { title: { es: "El Pozo de la Ascensión", en: "The Well of Ascension" }, words: 249522 },
+        { title: { es: "El Héroe de las Eras", en: "The Hero of Ages" }, words: 241889 },
+        { title: { es: "Elantris", en: "Elantris" }, words: 205464 },
+        { title: { es: "El Aliento de los Dioses", en: "Warbreaker" }, words: 243849 },
         { title: { es: "El Camino de los Reyes", en: "The Way of Kings" }, words: 383389 },
-        { title: { es: "Palabras Radiantes", en: "Words of Radiance" }, words: 398238 },
-        { title: { es: "Juramentada", en: "Oathbringer" }, words: 454440 },
+        { title: { es: "Palabras Radiantes", en: "Words of Radiance" }, words: 399431 },
+        { title: { es: "Danzante del Filo (Arcanum)", en: "Edgedancer" }, words: 40666 },
+        { title: { es: "Juramentada", en: "Oathbringer" }, words: 451912 },
+        { title: { es: "Esquirla del Amanecer", en: "Dawnshard" }, words: 56282 },
         { title: { es: "El Ritmo de la Guerra", en: "Rhythm of War" }, words: 455891 },
-        { title: { es: "Nacidos de la Bruma: El Imperio Final", en: "Mistborn: The Final Empire" }, words: 215000 }
+        { title: { es: "Aleación de Ley", en: "The Alloy of Law" }, words: 96646 },
+        { title: { es: "Sombras de Identidad", en: "Shadows of Self" }, words: 114776 },
+        { title: { es: "Brazales de Duelo", en: "The Bands of Mourning" }, words: 130295 },
+        { title: { es: "Historia Secreta (Arcanum)", en: "Mistborn: Secret History" }, words: 58000 },
+        { title: { es: "El Metal Perdido", en: "The Lost Metal" }, words: 165110 },
+        { title: { es: "El Alma del Emperador (Arcanum)", en: "The Emperor's Soul" }, words: 31759 },
+        { title: { es: "Sombras por Silencio... (Arcanum)", en: "Shadows for Silence..." }, words: 27000 },
+        { title: { es: "Sexto del Ocaso (Arcanum)", en: "Sixth of the Dusk" }, words: 28000 },
+        { title: { es: "Tress del Mar Esmeralda", en: "Tress of the Emerald Sea" }, words: 173730 },
+        { title: { es: "Yumi y el Pintor de Pesadillas", en: "Yumi and the Nightmare Painter" }, words: 140000 },
+        { title: { es: "El Hombre Iluminado", en: "The Sunlit Man" }, words: 100000 },
+        { title: { es: "Viento y Verdad (Previsto)", en: "Wind and Truth" }, words: 491000 }
     ],
     fragments: {
         es: [

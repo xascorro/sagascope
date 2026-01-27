@@ -3,11 +3,13 @@ window.SagaContent = {
     id: 'reina_roja',
     names: { es: 'Universo Reina Roja', en: 'Red Queen Universe' },
     books: [
-        { title: { es: "Reina Roja", en: "Red Queen" }, words: 115000 },
-        { title: { es: "Loba Negra", en: "Black Wolf" }, words: 121000 },
-        { title: { es: "Rey Blanco", en: "White King" }, words: 125000 },
+        { title: { es: "El Paciente", en: "The Patient" }, words: 102000 },
         { title: { es: "Cicatriz", en: "Scar" }, words: 98000 },
-        { title: { es: "El Paciente", en: "The Patient" }, words: 102000 }
+        { title: { es: "Reina Roja", en: "Red Queen" }, words: 142000 },
+        { title: { es: "Loba Negra", en: "Black Wolf" }, words: 135000 },
+        { title: { es: "Rey Blanco", en: "White King" }, words: 125000 },
+        { title: { es: "Todo Arde", en: "Everything Burns" }, words: 100000 },
+        { title: { es: "Todo Vuelve", en: "Everything Returns" }, words: 110000 }
     ],
     fragments: {
         es: [

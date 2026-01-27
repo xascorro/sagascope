@@ -7,6 +7,8 @@
     <title>SagaScope</title>
     <!-- Base Core Styles -->
     <link rel="stylesheet" href="core/style.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Dynamic Theme Styles (Swapped by JS) -->
     <link id="theme-style" rel="stylesheet" href="">
 </head>
@@ -20,6 +22,7 @@
                 <h2 id="saga-title">Selecciona un Universo</h2>
             </div>
 
+            <!-- Controls ... -->
             <div class="header-controls">
                 <button id="back-btn" class="icon-btn" style="visibility: hidden;" title="Volver / Back">
                     <!-- Simple Back Arrow SVG -->
@@ -43,6 +46,21 @@
 
         <!-- Main Reading View (initially hidden) -->
         <div id="main-ui" class="glass-panel">
+
+            <!-- Stats Area -->
+            <div id="saga-stats" style="display:none; padding: 0 20px; margin-bottom: 20px;">
+                <h3 id="stats-summary" style="text-align:center; color: var(--text-secondary); margin-bottom:20px;">
+                    Estimaciones</h3>
+                <div class="charts-container">
+                    <div class="chart-box">
+                        <canvas id="booksChart"></canvas>
+                    </div>
+                    <div class="chart-box">
+                        <canvas id="progressChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
             <div class="controls">
                 <select id="book-selector">
                     <!-- Populated by JS -->

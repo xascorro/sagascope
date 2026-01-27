@@ -3,11 +3,11 @@ window.SagaContent = {
     id: 'got',
     names: { es: 'Juego de Tronos', en: 'Game of Thrones' },
     books: [
-        { title: { es: "Juego de Tronos", en: "A Game of Thrones" }, words: 298000 },
-        { title: { es: "Choque de Reyes", en: "A Clash of Kings" }, words: 326000 },
-        { title: { es: "Tormenta de Espadas", en: "A Storm of Swords" }, words: 424000 },
-        { title: { es: "Festín de Cuervos", en: "A Feast for Crows" }, words: 300000 },
-        { title: { es: "Danza de Dragones", en: "A Dance with Dragons" }, words: 422000 }
+        { title: { es: "Juego de Tronos", en: "A Game of Thrones" }, words: 292727 },
+        { title: { es: "Choque de Reyes", en: "A Clash of Kings" }, words: 318903 },
+        { title: { es: "Tormenta de Espadas", en: "A Storm of Swords" }, words: 414604 },
+        { title: { es: "Festín de Cuervos", en: "A Feast for Crows" }, words: 295032 },
+        { title: { es: "Danza de Dragones", en: "A Dance with Dragons" }, words: 414788 }
     ],
     fragments: {
         es: [

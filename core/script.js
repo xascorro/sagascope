@@ -64,8 +64,12 @@ const mainUI = document.getElementById('main-ui');
 
 // Initialization
 function init() {
-    // Determine user lang if desired, default to ES
-    currentLang = 'es';
+    // Detect user language from browser
+    const browserLang = navigator.language || navigator.userLanguage || 'es';
+    const langCode = browserLang.split('-')[0].toLowerCase();
+
+    // Check if supported, otherwise default to ES
+    currentLang = TRANSLATIONS[langCode] ? langCode : 'es';
     langSelector.value = currentLang;
 
     // Bind global events
@@ -148,6 +152,9 @@ window.loadSaga = function (sagaId) {
 
 function setupSaga(data) {
     currentSagaData = data;
+
+    // Initial Chart Render
+    setTimeout(() => renderCharts(data), 100); // Slight delay to ensure DOM is ready/visible
 
     // Update Header
     const name = data.names ? data.names[currentLang] : data.name;
@@ -239,8 +246,12 @@ window.finishTest = function () {
     const timeMin = timeSec / 60;
 
     // Word Count
-    const text = readingContent.innerText;
-    const wordCount = text.trim().split(/\s+/).length; // Approximate, usually good enough
+    // Word Count - Use source data to avoid counting buttons/UI
+    const selectedIndex = bookSelector.value;
+    let fragments = Array.isArray(currentSagaData.fragments) ? currentSagaData.fragments : currentSagaData.fragments[currentLang];
+    const text = fragments[selectedIndex].text;
+
+    const wordCount = text.trim().split(/\s+/).length;
 
     if (timeSec < 3) {
         alert(getText('tooFast'));
@@ -248,6 +259,12 @@ window.finishTest = function () {
     }
 
     const wpm = Math.round(wordCount / timeMin);
+
+    // Save Result
+    StorageManager.saveResult(wpm, currentSagaData.id);
+
+    // Update Charts
+    renderCharts(currentSagaData, wpm);
 
     // Calculate Projections
     // Handle localized book titles
@@ -279,6 +296,116 @@ window.finishTest = function () {
 
     document.getElementById('results-content').innerHTML = resultsHTML;
     resultsOverlay.style.display = 'flex';
+}
+
+// Stats & Storage Logic
+const StorageManager = {
+    KEY: 'sagaScope_history',
+    getHistory() {
+        return JSON.parse(localStorage.getItem(this.KEY) || '[]');
+    },
+    saveResult(wpm, sagaId) {
+        const history = this.getHistory();
+        history.push({
+            date: Date.now(),
+            wpm: wpm,
+            sagaId: sagaId
+        });
+        localStorage.setItem(this.KEY, JSON.stringify(history));
+    },
+    getAverageWPM() {
+        const history = this.getHistory();
+        if (history.length === 0) return 200; // Default average
+        const total = history.reduce((sum, item) => sum + item.wpm, 0);
+        return Math.round(total / history.length);
+    }
+};
+
+let booksChartInstance = null;
+let progressChartInstance = null;
+
+function renderCharts(sagaData, currentWpm = null) {
+    const statsContainer = document.getElementById('saga-stats');
+    statsContainer.style.display = 'block';
+
+    const wpm = currentWpm || StorageManager.getAverageWPM();
+    const history = StorageManager.getHistory();
+
+    // 1. Books Chart (Bar)
+    const ctxBooks = document.getElementById('booksChart').getContext('2d');
+    const bookLabels = sagaData.books.map(b => (typeof b.title === 'object') ? (b.title[currentLang] || b.title.es) : b.title);
+    const bookHours = sagaData.books.map(b => (b.words / wpm / 60).toFixed(1));
+    const totalHours = bookHours.reduce((a, b) => parseFloat(a) + parseFloat(b), 0).toFixed(1);
+
+    document.getElementById('stats-summary').innerHTML = `
+        Tiempo estimado para toda la saga: <strong style="color:var(--text-primary); font-size:1.4rem">${totalHours} ${getText('hours')}</strong>
+        <br><small style="opacity:0.7">Basado en tu velocidad: ${wpm} WPM</small>
+    `;
+
+    if (booksChartInstance) booksChartInstance.destroy();
+
+    booksChartInstance = new Chart(ctxBooks, {
+        type: 'bar',
+        data: {
+            labels: bookLabels,
+            datasets: [{
+                label: getText('hours'),
+                data: bookHours,
+                backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                borderColor: 'rgba(255, 255, 255, 0.8)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            indexAxis: 'y', // Horizontal bars
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                title: { display: true, text: 'Tiempo por Libro (Horas)', color: '#aaa' }
+            },
+            scales: {
+                x: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#aaa' } },
+                y: { ticks: { color: '#aaa', autoSkip: false } }
+            }
+        }
+    });
+
+    // 2. Progress Chart (Line)
+    const ctxProgress = document.getElementById('progressChart').getContext('2d');
+    // Last 10 sessions
+    const recentHistory = history.slice(-10);
+    const progressLabels = recentHistory.map((h, i) => i + 1);
+    const progressData = recentHistory.map(h => h.wpm);
+
+    if (progressChartInstance) progressChartInstance.destroy();
+
+    progressChartInstance = new Chart(ctxProgress, {
+        type: 'line',
+        data: {
+            labels: progressLabels,
+            datasets: [{
+                label: 'WPM',
+                data: progressData,
+                borderColor: '#4caf50', // Green accent
+                backgroundColor: 'rgba(76, 175, 80, 0.2)',
+                tension: 0.4,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                title: { display: true, text: 'Tu Progreso (WPM)', color: '#aaa' }
+            },
+            scales: {
+                y: { beginAtZero: false, grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#aaa' } },
+                x: { display: false }
+            }
+        }
+    });
 }
 
 window.resetTest = function () {
