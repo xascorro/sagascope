@@ -23,6 +23,7 @@
             </div>
 
             <!-- Controls ... -->
+            <!-- Controls -->
             <div class="header-controls">
                 <button id="back-btn" class="icon-btn" style="visibility: hidden;" title="Volver / Back">
                     <!-- Simple Back Arrow SVG -->
@@ -32,10 +33,20 @@
                         <polyline points="12 19 5 12 12 5"></polyline>
                     </svg>
                 </button>
-                <select id="lang-selector">
-                    <option value="es">ES</option>
-                    <option value="en">EN</option>
-                </select>
+                
+                <!-- Custom Language Selector -->
+                <div class="custom-select-wrapper">
+                    <div class="custom-select">
+                        <div class="custom-select__trigger"><span>Español</span> <div class="arrow"></div></div>
+                        <div class="custom-options">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <button id="theme-toggle" class="icon-btn" title="Toggle Theme">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                </button>
             </div>
         </header>
 

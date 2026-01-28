@@ -1,41 +1,49 @@
-/* Dune Theme */
-:root {
-    --text-primary: #f0e6d2;
-    /* Sand/Beige */
-    --text-secondary: #cba34f;
-    /* Spice Gold */
-    --accent-color: #0088ff;
-    /* Ibad Eyes Blue */
-    --glass-bg: rgba(40, 30, 20, 0.85);
-    /* Dark sand shadow */
-    --glass-border: rgba(200, 150, 50, 0.3);
-    --font-ui: 'Orbitron', system-ui, sans-serif;
-    /* Futurisic */
-    --font-read: 'Georgia', serif;
-}
-
+/* Dune Theme - Modern Refactor */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
-h1,
-h2,
-button {
-    font-family: 'Orbitron', sans-serif;
-    letter-spacing: 2px;
+:root {
+    /* Brand Colors */
+    --accent-color: #0088ff;
+    /* Ibad Eyes Blue */
+    --accent-glow: rgba(0, 136, 255, 0.4);
+
+    /* Text Overrides */
+    --text-primary: #f0e6d2;
+    /* Sand Beige */
+    --text-secondary: #cba34f;
+    /* Spice Gold */
+
+    /* Background Tint */
+    --bg-color: #120f0a;
+    /* Dark arid black */
+    --bg-card: rgba(40, 30, 20, 0.4);
+    --border-color: rgba(200, 150, 50, 0.2);
+
+    /* Fonts */
+    --font-ui: 'Orbitron', system-ui, sans-serif;
+    --font-read: 'Georgia', serif;
+
+    /* Tweak core geometry for futuristic feel */
+    --radius-md: 4px;
+    --radius-pill: 2px;
 }
 
 h1 {
     color: #ffd700;
-    text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
 }
 
-button {
-    background: #000;
+button.primary-action {
+    background: transparent;
     border: 1px solid var(--accent-color);
     color: var(--accent-color);
-    box-shadow: 0 0 10px rgba(0, 136, 255, 0.3);
+    box-shadow: 0 0 15px rgba(0, 136, 255, 0.15);
 }
 
-button:hover {
+button.primary-action:hover {
     background: var(--accent-color);
-    color: #fff;
+    color: #000;
+    box-shadow: 0 0 30px rgba(0, 136, 255, 0.4);
 }

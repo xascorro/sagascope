@@ -1,15 +1,51 @@
-/* Core Styles - SagaScope */
+/* Core Styles - SagaScope Modern Redesign */
+
+/* 1. Design Tokens & Variables */
 :root {
-    /* Defaults - will be overridden by saga themes */
-    --bg-color: #111;
-    --text-primary: #fff;
-    --text-secondary: #aaa;
-    --accent-color: #444;
-    --glass-bg: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --font-ui: system-ui, -apple-system, sans-serif;
-    --font-read: serif;
-    --card-hover-scale: 1.03;
+    /* Color Palette - Modern Neutral foundation */
+    --bg-color: #0f0f12;
+    /* Main background - Deep almost-black */
+    --bg-card: rgba(255, 255, 255, 0.05);
+    /* Very subtle card bg */
+    --bg-card-hover: rgba(255, 255, 255, 0.08);
+
+    /* Typography Colors */
+    --text-primary: #f2f2f2;
+    /* High contrast white */
+    --text-secondary: #a0a0a0;
+    /* Muted grey for metadata */
+    --text-tertiary: #666666;
+    /* Subtle details */
+
+    /* Brand/Accent Colors (Default - overridden by Sagas) */
+    --accent-color: #ffffff;
+    --accent-glow: rgba(255, 255, 255, 0.2);
+
+    /* Typography System */
+    --font-ui: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-read: 'Merriweather', Georgia, serif;
+    /* Serifs for reading */
+
+    /* Spacing & Layout */
+    --spacing-unit: 8px;
+    --container-width: 1000px;
+    --header-height: 80px;
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-pill: 9999px;
+
+    /* Effects */
+    --glass-blur: 16px;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --shadow-soft: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+
+    /* Animation */
+    --ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+/* 2. Reset & Base */
+html {
+    scroll-behavior: smooth;
 }
 
 * {
@@ -21,7 +57,7 @@
 body {
     background-color: var(--bg-color);
     background-image: url('../assets/home-bg.png');
-    /* Default Theme */
+    /* Fallback */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -29,62 +65,67 @@ body {
     font-family: var(--font-ui);
     min-height: 100vh;
     overflow-x: hidden;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
     transition: background-image 0.8s ease-in-out;
 }
 
-/* Glassmorphism containers */
-.glass-panel {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-}
-
+/* 3. Layout Containers */
 #app-container {
-    max-width: 1100px;
+    max-width: var(--container-width);
     margin: 0 auto;
-    min-height: 90vh;
+    padding: 0 24px;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    gap: 30px;
 }
 
-/* Header */
+/* 4. Glassmorphism / Cards - Refined & Minimal */
+.glass-panel {
+    background: var(--bg-card);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+}
+
+/* 5. Header Component */
 header {
+    height: var(--header-height);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 2rem;
+    margin-top: 24px;
+    padding: 0 32px;
+    /* Ensure dropdowns appear on top */
     position: relative;
-    z-index: 10;
+    z-index: 50;
 }
 
 .brand {
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
-h1 {
-    font-size: 1.8rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-weight: 800;
-    background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.brand h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 2px;
 }
 
-#saga-title {
-    font-size: 0.9rem;
+.brand #saga-title {
+    font-size: 0.85rem;
     color: var(--text-secondary);
-    margin-top: 4px;
     font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 }
 
-/* Top Controls (Back & Lang) */
+/* Controls */
 .header-controls {
     display: flex;
     align-items: center;
@@ -93,254 +134,481 @@ h1 {
 
 .icon-btn {
     background: transparent;
-    border: none;
+    border: 1px solid transparent;
     color: var(--text-primary);
     cursor: pointer;
-    font-size: 1.2rem;
-    padding: 8px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    transition: background 0.2s;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    transition: all 0.2s ease;
 }
 
 .icon-btn:hover {
     background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
 }
 
-#lang-selector {
-    background: rgba(0, 0, 0, 0.4);
-    border: 1px solid var(--glass-border);
-    color: var(--text-primary);
-    padding: 6px 12px;
-    border-radius: 20px;
-    outline: none;
-    cursor: pointer;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-}
-
-#lang-selector:hover {
-    background: rgba(0, 0, 0, 0.6);
-}
-
-/* Saga Selector */
-#saga-selector-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 24px;
-    padding: 10px;
-    flex: 1;
-    align-content: center;
-    opacity: 0;
-    animation: fadeIn 0.8s ease forwards;
-}
-
-.saga-card {
-    background: rgba(0, 0, 0, 0.4);
-    border: 1px solid var(--glass-border);
-    padding: 50px 20px;
-    text-align: center;
-    font-size: 1.4rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    border-radius: 16px;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+/* Custom Language Selector */
+.custom-select-wrapper {
     position: relative;
-    overflow: hidden;
+    user-select: none;
+    width: 140px;
 }
 
-.saga-card::before {
-    content: '';
+.custom-select {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-select__trigger {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.custom-select__trigger:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.custom-options {
     position: absolute;
-    top: 0;
+    display: block;
+    top: 120%;
     left: 0;
     right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1), transparent 70%);
+    background: #1a1a1e;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     opacity: 0;
-    transition: opacity 0.3s;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    z-index: 1000;
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 5px;
 }
 
-.saga-card:hover {
-    transform: translateY(-8px) scale(var(--card-hover-scale));
-    border-color: var(--text-primary);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
-}
-
-.saga-card:hover::before {
+.custom-select.open .custom-options {
     opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+    transform: translateY(0);
+}
+
+.custom-option {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.custom-option:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.custom-option.selected {
+    color: #4caf50;
+    /* Accent color green */
+    background: rgba(76, 175, 80, 0.1);
+}
+
+.flag-icon {
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+.arrow {
+    position: relative;
+    height: 8px;
+    width: 8px;
+    margin-left: 8px;
+}
+
+.arrow::before,
+.arrow::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    width: 1px;
+    height: 100%;
+    background-color: var(--text-secondary);
+    transition: all 0.2s;
+}
+
+.arrow::before {
+    left: -2px;
+    transform: rotate(45deg);
+}
+
+.arrow::after {
+    left: 2px;
+    transform: rotate(-45deg);
+}
+
+.custom-select.open .arrow::before {
+    transform: rotate(-45deg);
+}
+
+.custom-select.open .arrow::after {
+    transform: rotate(45deg);
+}
+
+/* Custom Language Selector */
+.custom-select-wrapper {
+    position: relative;
+    user-select: none;
+    width: 180px;
+}
+
+.custom-select {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-select__trigger {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.custom-select__trigger:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.custom-options {
+    position: absolute;
+    display: block;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #1a1a1e;
+    /* Solid dark bg for readability */
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-top: 0;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: all 0.3s var(--ease-out);
+    z-index: 100;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 8px;
+}
+
+.custom-select.open .custom-options {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+    transform: translateY(0);
+}
+
+.custom-option {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.custom-option:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.custom-option.selected {
+    color: var(--accent-color);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.flag-icon {
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.arrow {
+    position: relative;
+    height: 8px;
+    width: 8px;
+}
+
+.arrow::before,
+.arrow::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    width: 0.15rem;
+    height: 100%;
+    transition: all 0.2s;
+}
+
+.arrow::before {
+    left: -2px;
+    transform: rotate(45deg);
+    background-color: var(--text-secondary);
+}
+
+.arrow::after {
+    left: 2px;
+    transform: rotate(-45deg);
+    background-color: var(--text-secondary);
+}
+
+.open .arrow::before {
+    left: -2px;
+    transform: rotate(-45deg);
+}
+
+.open .arrow::after {
+    left: 2px;
+    transform: rotate(45deg);
+}
+
+/* RTL Support for Custom Select */
+.rtl .custom-select__trigger {
+    flex-direction: row-reverse;
+}
+
+.rtl .custom-option {
+    flex-direction: row-reverse;
+}
+
+/* 6. Saga Selector Grid */
+#saga-selector-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
+    padding: 40px 0;
+    animation: fadeIn 0.8s var(--ease-out) forwards;
+}
+
+/* Saga Card Contrast Fix */
+.saga-card {
+    position: relative;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Darker, opaque background for legibility over light images */
+    background: rgba(15, 15, 20, 0.85);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s var(--ease-out);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .saga-card span {
-    position: relative;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
     z-index: 2;
+    transition: transform 0.4s var(--ease-out);
+    /* Ensure text pops */
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
 }
 
-/* Main UI (Hidden by default) */
+/* Hover Effects */
+.saga-card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--accent-color);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.6);
+}
+
+.saga-card:hover span {
+    transform: scale(1.05);
+    color: var(--accent-color);
+}
+
+/* 7. Main Reading UI */
 #main-ui {
     display: none;
+    /* Toggled by JS */
     flex-direction: column;
-    flex: 1;
-    gap: 20px;
-    overflow: hidden;
-    animation: slideUp 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    margin-top: 20px;
+    min-height: 500px;
+    animation: slideUp 0.6s var(--ease-out);
 }
 
+/* Control Bar within Main UI */
 .controls {
-    padding: 20px;
+    padding: 30px;
     display: flex;
-    gap: 16px;
+    gap: 20px;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    border-bottom: 1px solid var(--border-color);
 }
 
 select {
-    padding: 12px 24px;
-    border-radius: 30px;
-    border: 1px solid var(--glass-border);
-    background: rgba(20, 20, 20, 0.8);
+    padding: 12px 20px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    background: rgba(0, 0, 0, 0.4);
     color: var(--text-primary);
     font-family: var(--font-ui);
-    cursor: pointer;
     font-size: 1rem;
-    min-width: 250px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    transition: all 0.2s;
+    min-width: 280px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s ease;
 }
 
-select:hover {
+select:hover,
+select:focus {
     border-color: var(--text-secondary);
+    background: rgba(0, 0, 0, 0.6);
 }
 
 button.primary-action {
-    background: var(--accent-color);
-    color: var(--text-primary);
-    font-weight: 700;
+    background: var(--text-primary);
+    color: var(--bg-color);
+    font-weight: 600;
     border: none;
-    padding: 12px 32px;
-    border-radius: 30px;
+    padding: 12px 36px;
+    border-radius: var(--radius-pill);
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
     cursor: pointer;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    transition: all 0.2s;
+    transition: all 0.2s ease;
 }
 
 button.primary-action:hover {
     transform: translateY(-2px);
-    filter: brightness(1.2);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
 }
 
-/* Reading Area */
+/* Reading Content Area */
 #reading-area {
     flex: 1;
     overflow-y: auto;
-    padding: 0 20px 40px 20px;
+    padding: 40px;
     scrollbar-width: thin;
-    scrollbar-color: var(--accent-color) transparent;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
 }
 
 #reading-content {
-    max-width: 750px;
+    max-width: 720px;
+    /* Optimal reading width */
     margin: 0 auto;
     font-family: var(--font-read);
-    font-size: 1.35rem;
-    /* Better readability */
-    line-height: 1.8;
-    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.25rem;
+    line-height: 1.9;
+    color: rgba(255, 255, 255, 0.95);
 }
 
 #reading-content p {
-    margin-bottom: 24px;
-    text-align: justify;
+    margin-bottom: 1.5em;
+    text-align: left;
+    /* Easier to read than justify for web */
 }
 
-.finish-btn-container {
-    display: flex;
-    justify-content: center;
-    margin: 60px 0;
-}
-
-/* Results Overlay */
+/* 8. Results Modal */
 #results-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.95);
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    /* Darker dimmer */
+    backdrop-filter: blur(8px);
     display: none;
     align-items: center;
     justify-content: center;
     z-index: 1000;
-    backdrop-filter: blur(5px);
-    animation: fadeIn 0.3s;
+    opacity: 0;
+    animation: fadeIn 0.4s forwards;
 }
 
 #results-content {
-    background: #1a1a1a;
-    padding: 50px;
+    background: #151515;
+    border: 1px solid var(--border-color);
+    padding: 60px 40px;
     border-radius: 24px;
-    max-width: 600px;
+    max-width: 500px;
     width: 90%;
     text-align: center;
-    border: 1px solid var(--accent-color);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
-    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 1);
+    transform: scale(0.95);
+    animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .wpm-big {
-    font-size: 5rem;
-    font-weight: 900;
-    color: var(--accent-color);
-    margin: 10px 0;
+    font-size: 6rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 20px 0;
     line-height: 1;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    letter-spacing: -0.04em;
 }
 
 .stats-row {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    margin-bottom: 30px;
-}
-
-.projection-list {
-    text-align: left;
-    margin: 30px 0;
-    list-style: none;
-    max-height: 250px;
-    overflow-y: auto;
-    background: rgba(255, 255, 255, 0.03);
-    padding: 20px;
-    border-radius: 12px;
-}
-
-.projection-list li {
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
 }
 
-.projection-list li:last-child {
-    border-bottom: none;
+.stats-row span {
+    display: block;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1.4rem;
+    margin-top: 4px;
 }
 
-/* Utilities */
+/* 9. Utilities */
 .hidden {
     display: none !important;
 }
 
-/* Animations */
+/* 10. Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -354,7 +622,7 @@ button.primary-action:hover {
 @keyframes slideUp {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(30px);
     }
 
     to {
@@ -363,37 +631,29 @@ button.primary-action:hover {
     }
 }
 
-/* Mobile Responsiveness */
+@keyframes popIn {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* 11. Responsive */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
-        gap: 1.5rem;
-        padding: 1.5rem 1rem;
-    }
-
-    .brand {
-        align-items: center;
-        text-align: center;
-    }
-
-    .header-controls {
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    h1 {
-        font-size: 1.5rem;
+        height: auto;
+        padding: 20px;
+        gap: 16px;
     }
 
     #app-container {
-        padding: 10px;
+        padding: 0 16px;
     }
 
-    /* Adjust controls stack */
     .controls {
         flex-direction: column;
-        width: 100%;
+        padding: 20px;
     }
 
     select,
@@ -402,12 +662,12 @@ button.primary-action:hover {
         min-width: unset;
     }
 
-    .wpm-big {
-        font-size: 3.5rem;
+    #reading-content {
+        font-size: 1.15rem;
     }
 
-    #results-content {
-        padding: 30px 20px;
+    .wpm-big {
+        font-size: 4rem;
     }
 }
 
@@ -424,25 +684,367 @@ button.primary-action:hover {
     padding: 15px;
     border: 1px solid var(--glass-border);
     position: relative;
-    height: 600px;
-    /* Fixed height for consistency */
+    /* Removed fixed height for dynamic sizing */
+    min-height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    /* Prevent spillover */
+    overflow: hidden;
+    /* Check if this needs to be visible for scrolling */
 }
 
-canvas {
-    max-width: 100% !important;
-    max-height: 100% !important;
-    width: 100% !important;
-    height: auto !important;
+/* 12. MULTI-THEME MODES */
+
+/* Global Transitions for Premium Feel */
+body,
+.glass-panel,
+.saga-card,
+button,
+.custom-select,
+#header-title,
+#saga-title {
+    transition: background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+        color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+        border-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+        box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+        transform 0.2s ease;
 }
 
-@media (max-width: 900px) {
-    .charts-container {
-        grid-template-columns: 1fr;
-        /* Stack vertically on smaller screens */
-    }
+/* Shared Resets for Clean Modes (Light, Dark, Sepia) */
+body.theme-light,
+body.theme-dark,
+body.theme-sepia {
+    background-image: none !important;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+}
+
+/* Specific UI resets to kill Saga styles in clean modes */
+body.theme-light .glass-panel,
+body.theme-dark .glass-panel,
+body.theme-sepia .glass-panel,
+body.theme-light .saga-card,
+body.theme-dark .saga-card,
+body.theme-sepia .saga-card,
+body.theme-light button,
+body.theme-dark button,
+body.theme-sepia button,
+body.theme-light .custom-select,
+body.theme-dark .custom-select,
+body.theme-sepia .custom-select {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+    border-radius: 12px !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    font-style: normal !important;
+    text-shadow: none !important;
+}
+
+/* Reset Typography Colors/Effects */
+body.theme-light #header-title,
+body.theme-light #saga-title,
+body.theme-dark #header-title,
+body.theme-dark #saga-title,
+body.theme-sepia #header-title,
+body.theme-sepia #saga-title {
+    -webkit-text-fill-color: initial !important;
+    filter: none !important;
+    text-shadow: none !important;
+    font-weight: 700 !important;
+}
+
+
+/* --- THEME DEFINITIONS --- */
+
+/* ☀️ LIGHT MODE (Minimalist / Apple-like) */
+body.theme-light {
+    background-color: #f5f5f7 !important;
+    /* Soft gray-white */
+    color: #1d1d1f !important;
+}
+
+body.theme-light .glass-panel,
+body.theme-light .saga-card,
+body.theme-light .custom-select,
+body.theme-light .custom-options {
+    background: #ffffff !important;
+    border: 1px solid #d2d2d7 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04) !important;
+    color: #1d1d1f !important;
+}
+
+body.theme-light .saga-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08) !important;
+    transform: translateY(-2px);
+    border-color: #0071e3 !important;
+    /* Apple Blue highlight */
+}
+
+body.theme-light #header-title,
+body.theme-light #saga-title {
+    color: #1d1d1f !important;
+}
+
+body.theme-light button,
+body.theme-light .custom-select__trigger {
+    background: #e8e8ed !important;
+    color: #1d1d1f !important;
+    border: none !important;
+}
+
+body.theme-light button:hover {
+    background: #d2d2d7 !important;
+}
+
+body.theme-light .highlight {
+    color: #0071e3 !important;
+}
+
+/* 🌙 DARK MODE (AMOLED / High Contrast) */
+body.theme-dark {
+    background-color: #000000 !important;
+    /* True Black */
+    color: #f5f5f7 !important;
+}
+
+body.theme-dark .glass-panel,
+body.theme-dark .saga-card,
+body.theme-dark .custom-select,
+body.theme-dark .custom-options {
+    background: #1c1c1e !important;
+    /* Dark Gray surface */
+    border: 1px solid #333333 !important;
+    box-shadow: none !important;
+    color: #f5f5f7 !important;
+}
+
+body.theme-dark .saga-card:hover {
+    background: #2c2c2e !important;
+    border-color: #666666 !important;
+}
+
+body.theme-dark #header-title,
+body.theme-dark #saga-title {
+    color: #ffffff !important;
+}
+
+body.theme-dark button,
+body.theme-dark .custom-select__trigger {
+    background: #2c2c2e !important;
+    color: #f5f5f7 !important;
+    border: 1px solid #48484a !important;
+}
+
+body.theme-dark button:hover {
+    background: #3a3a3c !important;
+    border-color: #ffffff !important;
+}
+
+body.theme-dark .highlight {
+    color: #0a84ff !important;
+    /* iOS Dark Mode Blue */
+}
+
+/* 📖 SEPIA MODE (Premium Reading / Warm) */
+body.theme-sepia {
+    background-color: #f2eadd !important;
+    /* Creamy Paper */
+    color: #433422 !important;
+    /* Dark Coffee Text */
+}
+
+body.theme-sepia .glass-panel,
+body.theme-sepia .saga-card,
+body.theme-sepia .custom-select,
+body.theme-sepia .custom-options {
+    background: #fdfbf7 !important;
+    /* Lighter warm paper */
+    border: 1px solid #dfd3c3 !important;
+    box-shadow: 0 4px 10px rgba(67, 52, 34, 0.05) !important;
+    color: #433422 !important;
+}
+
+body.theme-sepia .saga-card:hover {
+    border-color: #a67c52 !important;
+    /* Leather brown */
+    background: #ffffff !important;
+}
+
+body.theme-sepia #header-title,
+body.theme-sepia #saga-title {
+    color: #2c2216 !important;
+    /* Deep brown */
+    font-family: 'Merriweather', 'Georgia', serif !important;
+    /* Serif for reading vibe */
+}
+
+body.theme-sepia button,
+body.theme-sepia .custom-select__trigger {
+    background: #e8dec8 !important;
+    color: #433422 !important;
+    border: none !important;
+}
+
+body.theme-sepia button:hover {
+    background: #dbcca7 !important;
+}
+
+body.theme-sepia .highlight {
+    color: #a67c52 !important;
+}
+
+/* Specific fix for Custom Options dropdown visibility in all themes */
+body.theme-light .custom-option,
+body.theme-dark .custom-option,
+body.theme-sepia .custom-option {
+    background: transparent !important;
+}
+
+body.theme-light .custom-option:hover,
+body.theme-light .custom-option.selected {
+    background: #f2f2f7 !important;
+}
+
+body.theme-dark .custom-option:hover,
+body.theme-dark .custom-option.selected {
+    background: #3a3a3c !important;
+}
+
+body.theme-sepia .custom-option:hover,
+body.theme-sepia .custom-option.selected {
+    background: #e8dec8 !important;
+}
+
+body.theme-light #reading-content {
+    color: #111 !important;
+}
+
+body.theme-light .custom-select__trigger,
+body.theme-light .custom-options,
+body.theme-light select {
+    background: #fff !important;
+    color: #333 !important;
+    border-color: #ddd !important;
+}
+
+body.theme-light .icon-btn {
+    color: #333 !important;
+}
+
+body.theme-light .saga-card {
+    background: #fff !important;
+    border: 1px solid #eee !important;
+    color: #333 !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05) !important;
+}
+
+body.theme-light .saga-card span {
+    color: #333 !important;
+    text-shadow: none !important;
+}
+
+/* --- DARK THEME (Noche 🌙) --- */
+body.theme-dark {
+    background-color: #000000 !important;
+    color: #e0e0e0 !important;
+}
+
+body.theme-dark .glass-panel {
+    background: #111 !important;
+    border-color: #333 !important;
+}
+
+body.theme-dark .brand h1,
+body.theme-dark .brand #saga-title {
+    color: #fff !important;
+    text-shadow: none !important;
+}
+
+body.theme-dark #reading-content {
+    color: #ccc !important;
+    font-weight: 300;
+}
+
+body.theme-dark .custom-select__trigger,
+body.theme-dark .custom-options,
+body.theme-dark select {
+    background: #111 !important;
+    color: #ccc !important;
+    border-color: #333 !important;
+}
+
+body.theme-dark .icon-btn {
+    color: #ccc !important;
+}
+
+body.theme-dark .saga-card {
+    background: #111 !important;
+    border: 1px solid #333 !important;
+    color: #ccc !important;
+}
+
+body.theme-dark .saga-card span {
+    color: #fff !important;
+    text-shadow: none !important;
+}
+
+/* --- SEPIA THEME (Lectura 📖) --- */
+body.theme-sepia {
+    background-color: #f4ecd8 !important;
+    /* Pale sepia */
+    color: #5b4636 !important;
+    /* Dark brown text */
+}
+
+body.theme-sepia .glass-panel {
+    background: #f9f4e6 !important;
+    border-color: #d7c9b1 !important;
+}
+
+body.theme-sepia .brand h1,
+body.theme-sepia .brand #saga-title,
+body.theme-sepia .wpm-big,
+body.theme-sepia .stats-row span {
+    color: #463325 !important;
+    text-shadow: none !important;
+}
+
+body.theme-sepia #reading-content {
+    color: #2e221b !important;
+    font-family: 'Merriweather', serif !important;
+}
+
+body.theme-sepia .custom-select__trigger,
+body.theme-sepia .custom-options,
+body.theme-sepia select {
+    background: #f4ecd8 !important;
+    color: #5b4636 !important;
+    border-color: #dbbba4 !important;
+}
+
+body.theme-sepia .icon-btn {
+    color: #5b4636 !important;
+}
+
+body.theme-sepia .saga-card {
+    background: #fdfaf3 !important;
+    border: 1px solid #e1d4c0 !important;
+    color: #5b4636 !important;
+}
+
+body.theme-sepia .saga-card span {
+    color: #463325 !important;
+    text-shadow: none !important;
+}
+
+body.theme-sepia button.primary-action {
+    background: #5b4636 !important;
+    color: #f4ecd8 !important;
+}
+
+body.theme-sepia .arrow::before,
+body.theme-sepia .arrow::after {
+    background-color: #8b6b52 !important;
 }

@@ -1,38 +1,54 @@
-/* Game of Thrones Theme */
-:root {
-    --text-primary: #dcdcdc;
-    /* Cold steel grey/white */
-    --text-secondary: #7a7a7a;
-    --accent-color: #8b0000;
-    /* Blood Red */
-    --glass-bg: rgba(20, 25, 30, 0.85);
-    /* Dark cold blue/grey */
-    --glass-border: rgba(139, 0, 0, 0.3);
-    /* Red border tint */
-    --font-ui: 'Cinzel', serif;
-    --font-read: 'Times New Roman', serif;
-}
-
+/* Game of Thrones Theme - Modern Refactor */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
 
-h1,
-h2 {
+:root {
+    /* Brand Colors */
+    --accent-color: #8b0000;
+    /* Blood Red */
+    --accent-glow: rgba(139, 0, 0, 0.4);
+
+    /* Text Overrides */
+    --text-primary: #e0e0e0;
+    /* Cold Steel */
+    --text-secondary: #7a7a7a;
+
+    /* Background Tint */
+    --bg-color: #0a0c10;
+    /* Winter Night */
+    --bg-card: rgba(20, 25, 30, 0.6);
+    --border-color: rgba(139, 0, 0, 0.25);
+
+    /* Fonts */
+    --font-ui: 'Cinzel', serif;
+    --font-read: 'Times New Roman', serif;
+
+    --radius-md: 2px;
+}
+
+h1 {
     font-family: 'Cinzel', serif;
     text-transform: uppercase;
     letter-spacing: 3px;
-    color: #e0e0e0;
-    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
-}
-
-button {
-    background: linear-gradient(to bottom, #2b2b2b, #1a1a1a);
-    border: 1px solid #555;
-    color: #fff;
-    font-family: 'Cinzel', serif;
+    background: linear-gradient(180deg, #fff 0%, #a0a0a0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.8));
 }
 
 .glass-panel {
-    border-radius: 4px;
-    border: 1px solid #444;
-    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+    border-color: #444;
+    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.5);
+    /* Dungeon feel */
+}
+
+button.primary-action {
+    background: #300;
+    border: 1px solid #500;
+    color: #ffd;
+}
+
+button.primary-action:hover {
+    background: #500;
+    border-color: #800;
+    box-shadow: 0 0 20px rgba(139, 0, 0, 0.5);
 }

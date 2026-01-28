@@ -1,39 +1,46 @@
-/* Hunger Games Theme */
+/* Hunger Games Theme - Modern Refactor */
 :root {
-    --text-primary: #fff;
-    --text-secondary: #f39c12;
-    /* Fire Orange */
+    /* Brand Colors */
     --accent-color: #e67e22;
-    /* Burnt Orange */
-    --glass-bg: rgba(20, 20, 20, 0.9);
-    --glass-border: rgba(230, 126, 34, 0.5);
-    --font-ui: 'Impact', 'Arial Black', sans-serif;
-    /* Bold propaganda style */
-    --font-read: 'Courier New', monospace;
-    /* Typewriter/survival vibe */
-}
+    /* Mockingjay Orange */
+    --accent-glow: rgba(230, 126, 34, 0.4);
 
-h1,
-h2 {
-    font-family: var(--font-ui);
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    /* Text Overrides */
+    --text-primary: #ffffff;
+    --text-secondary: #f39c12;
+
+    /* Background Tint */
+    --bg-color: #1a1a1a;
+    --bg-card: rgba(30, 30, 30, 0.85);
+    /* Heavy industrial feel */
+    --border-color: rgba(230, 126, 34, 0.4);
+
+    /* Fonts */
+    --font-ui: 'Arial Black', 'Impact', sans-serif;
+    --font-read: 'Courier New', monospace;
+    /* Survival typewriter */
+
+    --radius-md: 0px;
+    /* Brutalist squared edges */
+    --radius-pill: 0px;
 }
 
 h1 {
-    color: #f39c12;
-    text-shadow: 0 0 10px #e67e22;
-}
-
-button {
-    background: #333;
-    border: 2px solid #e67e22;
-    color: #fff;
     text-transform: uppercase;
-    font-weight: bold;
+    letter-spacing: 1px;
+    color: #e67e22;
 }
 
-button:hover {
-    background: #e67e22;
+button.primary-action {
+    background: #333;
+    border: 2px solid var(--accent-color);
+    color: var(--text-primary);
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+button.primary-action:hover {
+    background: var(--accent-color);
     color: #000;
 }

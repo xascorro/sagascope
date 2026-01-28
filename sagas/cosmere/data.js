@@ -1,52 +1,71 @@
-// Cosmere Module Data
-window.SagaContent = {
-    id: 'cosmere',
-    names: { es: 'El Cosmere', en: 'The Cosmere' },
-    books: [
-        { title: { es: "Nacidos de la Bruma: El Imperio Final", en: "Mistborn: The Final Empire" }, words: 211959 },
-        { title: { es: "El Pozo de la Ascensión", en: "The Well of Ascension" }, words: 249522 },
-        { title: { es: "El Héroe de las Eras", en: "The Hero of Ages" }, words: 241889 },
-        { title: { es: "Elantris", en: "Elantris" }, words: 205464 },
-        { title: { es: "El Aliento de los Dioses", en: "Warbreaker" }, words: 243849 },
-        { title: { es: "El Camino de los Reyes", en: "The Way of Kings" }, words: 383389 },
-        { title: { es: "Palabras Radiantes", en: "Words of Radiance" }, words: 399431 },
-        { title: { es: "Danzante del Filo (Arcanum)", en: "Edgedancer" }, words: 40666 },
-        { title: { es: "Juramentada", en: "Oathbringer" }, words: 451912 },
-        { title: { es: "Esquirla del Amanecer", en: "Dawnshard" }, words: 56282 },
-        { title: { es: "El Ritmo de la Guerra", en: "Rhythm of War" }, words: 455891 },
-        { title: { es: "Aleación de Ley", en: "The Alloy of Law" }, words: 96646 },
-        { title: { es: "Sombras de Identidad", en: "Shadows of Self" }, words: 114776 },
-        { title: { es: "Brazales de Duelo", en: "The Bands of Mourning" }, words: 130295 },
-        { title: { es: "Historia Secreta (Arcanum)", en: "Mistborn: Secret History" }, words: 58000 },
-        { title: { es: "El Metal Perdido", en: "The Lost Metal" }, words: 165110 },
-        { title: { es: "El Alma del Emperador (Arcanum)", en: "The Emperor's Soul" }, words: 31759 },
-        { title: { es: "Sombras por Silencio... (Arcanum)", en: "Shadows for Silence..." }, words: 27000 },
-        { title: { es: "Sexto del Ocaso (Arcanum)", en: "Sixth of the Dusk" }, words: 28000 },
-        { title: { es: "Tress del Mar Esmeralda", en: "Tress of the Emerald Sea" }, words: 173730 },
-        { title: { es: "Yumi y el Pintor de Pesadillas", en: "Yumi and the Nightmare Painter" }, words: 140000 },
-        { title: { es: "El Hombre Iluminado", en: "The Sunlit Man" }, words: 100000 },
-        { title: { es: "Viento y Verdad (Previsto)", en: "Wind and Truth" }, words: 491000 }
-    ],
-    fragments: {
-        es: [
-            {
-                title: "Preludio al Archivo (Inspirado)",
-                text: `Kalak rodeaba la cresta rocosa, su corazón palpitando con un ritmo frenético que resonaba en sus oídos como tambores de guerra.\n\nEl aire estaba saturado de olor a humo y a piedra quemada. A su alrededor, el campo de batalla yacía en un silencio antinatural, un contraste brutal con los gritos y el estruendo que habían llenado el aire apenas unas horas antes. Cuerpos de humanos y parshmenios se amontonaban indiscriminadamente, sus sangres mezclándose en el suelo polvoriento, formando charcos oscuros que reflejaban el cielo tormentoso.\n\nDiez de nosotros. Éramos diez al principio. Kalak miró a su alrededor, buscando desesperadamente a los otros. ¿Cuántos habían sobrevivido esta vez? La Desolación había sido brutal, más salvaje que cualquiera de las anteriores. Las Bestias del Trueno habían arrasado ciudades enteras, y los nexos de los cielos se habían abierto para dejar caer horrores que desafiaban la comprensión.\n\nCaminó entre los caídos, sus botas crujiendo sobre la gravilla. Vio una espada esquirlada clavada en el suelo, su hoja brillando con una luz tenue y pulsante, como si tuviera vida propia. Pertenecía a Jezrien. Un escalofrío recorrió la espalda de Kalak. Si Jezrien había caído, entonces la esperanza era frágil como el cristal. Pero entonces vio una figura sentada sobre una roca cercana, con la cabeza baja y los hombros hundidos. Era él. Jezrien, el Rey de los Heraldos, parecía un hombre mortal, agotado y roto por el peso de los milenios.`
-            },
-            {
-                title: "Juramento del Puente (Inspirado)",
-                text: `El puente pesaba. Pesaba más que la madera y el hierro de los que estaba hecho. Pesaba con las vidas de los hombres que habían muerto cargándolo antes que él, y con las vidas de los que morirían hoy. Kaladin apretó los dientes, sintiendo la madera áspera clavarse en su hombro ya encallecido. El sudor le corría por la frente, escociéndole en los ojos, pero no podía soltarse para secárselo. Correr. Solo podía correr.\n\n"¡Arriba!" gritó Gaz desde atrás, su voz llena de desprecio y crueldad.\n\nAl unísono, el Puente Cuatro levantó la enorme estructura. Kaladin sintió el familiar crujido en sus rodillas, el dolor agudo en su espalda. Pero no vaciló. No podía permitirse vacilar. A su alrededor, los otros hombres jadeaban y gruñían, sus rostros máscaras de desesperación y esfuerzo. Roca, Teft, Moash... todos compartían la misma carga, el mismo destino. Ser carne de cañón para los ejércitos alezi, sebo para distraer a los parshendi mientras los verdaderos soldados cruzaban los abismos.`
-            }
+// Cosmere Data
+(() => {
+    // Helper function is now global in script.js (window.repeat)
+
+    const TEXTS = {
+        en: {
+            base: `Ash fell from the sky. It fell like black snow, dusting the streets of Luthadel, coating the spires of Kredik Shaw. Kelsier smiled, watching it. He was a survivor. He had survived the Pits of Hathsin, and he would survive this. The Lord Ruler had reigned for a thousand years, but tonight, the rebellion would begin. Vin crouched in the shadows, her eyes wide. She was just a street urchin, a thief, but Kelsier saw something in her. A spark. Mistborn.
+
+Szeth-son-son-Vallano, Truthless of Shinovar, wore white on the day he was to kill a king. The white clothing was a simple thing, loose and comfortable, but in this land of rock and storm, it stood out like a beacon. He walked across the marble floor, listening to the screams. He did not want to kill, but his Oathstone demanded it. He was a slave to his stone, and tonight, the King of Alethkar would die. He lashed himself to the ceiling, gravity shifting, his perspective changing.
+
+Kaladin Stormblessed sat with his back against the wooden side of the bridge, staring out at the Shattered Plains. The chasms were deep, dark scars in the earth, home to chasmfiends and sudden death. Bridge Four. That was his team. His family. They were expendable, fodder for the Parshendi arrows, but Kaladin had sworn to protect them. The wind spren, Syl, danced around him, a ribbon of light. "They will try to kill you," she whispered. "Let them try," Kaladin muttered, gripping his spear.
+
+Shallan Davar sketched the pattern of the moss on the rock, her charcoal stick moving deftly. She needed to capture it, to understand it. The world was full of secrets, and she intended to find them all. Her brothers relied on her. Her house relied on her. She had come to Kharbranth to become a ward of Jasnah Kholin, the most brilliant scholar in the world. But Jasnah was dangerous, a heretic, and Shallan had a secret of her own. A Soulcaster.
+
+Dalinar Kholin stood on the top of Urithiru, the city of towers. The Highstorm approached, a wall of blackness and lightning. He did not fear it. He welcomed it. The Stormfather spoke to him in the thunder. "Unite them," the voice said. "Unite them, or perish." The Knights Radiant were returning. The Desolation was here. And Dalinar, the Blackthorn, would face it with fire and blood.`
+        },
+        es: {
+            base: `La ceniza caía del cielo. Caía como nieve negra, cubriendo las calles de Luthadel, cubriendo las agujas de Kredik Shaw. Kelsier sonrió, observándola. Era un superviviente. Había sobrevivido a los Pozos de Hathsin, y sobreviviría a esto. El Lord Legislador había reinado durante mil años, pero esta noche comenzaría la rebelión. Vin se agachó en las sombras, con los ojos muy abiertos. No era más que una pilluela de la calle, una ladrona, pero Kelsier vio algo en ella. Una chispa. Nacida de la Bruma.
+
+Szeth-hijo-hijo-Vallano, Sinverdad de Shinovar, vestía de blanco el día que iba a matar a un rey. La ropa blanca era algo sencillo, suelta y cómoda, pero en esta tierra de rocas y tormentas, destacaba como un faro. Caminó por el suelo de mármol, escuchando los gritos. No quería matar, pero su Piedra Juramento lo exigía. Era un esclavo de su piedra, y esta noche, el Rey de Alethkar moriría. Se enlazó al techo, la gravedad cambió, su perspectiva cambió.
+
+Kaladin Bendito por la Tormenta estaba sentado con la espalda contra el costado de madera del puente, mirando hacia las Llanuras Quebradas. Los abismos eran cicatrices profundas y oscuras en la tierra, hogar de los demonios del abismo y de la muerte súbita. El Puente Cuatro. Ese era su equipo. Su familia. Eran prescindibles, carne de cañón para las flechas Parshendi, pero Kaladin había jurado protegerlos. La spren del viento, Syl, bailaba a su alrededor, una cinta de luz. "Intentarán matarte", susurró. "Que lo intenten", murmuró Kaladin, agarrando su lanza.
+
+Shallan Davar dibujó el patrón del musgo en la roca, su carboncillo moviéndose hábilmente. Necesitaba capturarlo, entenderlo. El mundo estaba lleno de secretos, y ella tenía la intención de encontrarlos todos. Sus hermanos dependían de ella. Su casa dependía de ella. Había venido a Kharbranth para convertirse en pupila de Jasnah Kholin, la erudita más brillante del mundo. Pero Jasnah era peligrosa, una hereje, y Shallan tenía un secreto propio. Un Moldeador de Almas.
+
+Dalinar Kholin estaba en la cima de Urithiru, la ciudad de las torres. La Alta Tormenta se acercaba, un muro de negrura y relámpagos. No le temía. Le daba la bienvenida. El Padre Tormenta le habló en el trueno. "Únelos", dijo la voz. "Únelos, o perece." Los Caballeros Radiantes estaban regresando. La Desolación estaba aquí. Y Dalinar, el Espina Negra, la enfrentaría con fuego y sangre.`
+        }
+    };
+
+    window.SagaContent = {
+        id: 'cosmere',
+        // ... names ...
+        names: {
+            es: 'El Cosmere',
+            en: 'The Cosmere',
+            zh: '三界宙 (Cosmere)',
+            hi: 'कॉस्मेर (Cosmere)',
+            fr: 'Le Cosmere',
+            ar: 'الكون (Cosmere)',
+            bn: 'কসমিয়ার (Cosmere)',
+            ru: 'Космер',
+            pt: 'O Cosmere',
+            ur: 'کوسمیر (Cosmere)'
+        },
+        books: [
+            { title: { es: "Nacidos de la Bruma", en: "Mistborn" }, words: 211959 },
+            { title: { es: "El Archivo de las Tormentas", en: "Stormlight Archive" }, words: 386470 },
+            { title: { es: "El Aliento de los Dioses", en: "Warbreaker" }, words: 204561 },
+            { title: { es: "Elantris", en: "Elantris" }, words: 202765 }
         ],
-        en: [
-            {
-                title: "Prelude to the Archive (Inspired)",
-                text: `Kalak rounded a rocky ridge, his heart thumping with a frantic rhythm that echoed in his ears like war drums. The air was thick with the smell of smoke and burning stone. Around him, the battlefield lay in an unnatural silence, a brutal contrast to the screams and clamor that had filled the air just hours before. Bodies of humans and Parshendi heaped carelessly, their blood mingling on the dusty ground, forming dark pools that reflected the stormy sky.\n\nTen of us. We were ten at the beginning. Kalak looked around, searching desperately for the others. How many had survived this time? The Desolation had been brutal, more savage than any before. Thunderclasts had razed entire cities, and the nexus of the heavens had opened to drop horrors that defied comprehension.\n\nHe walked among the fallen, his boots crunching on gravel. He saw a Shardblade stuck in the ground, its blade glowing with a faint, pulsing light, as if it had a life of its own. It belonged to Jezrien. A chill ran down Kalak's spine. If Jezrien had fallen, then hope was fragile as glass. But then he saw a figure sitting on a nearby rock, head bowed and shoulders slumped. It was him. Jezrien, King of the Heralds, looked like a mortal man, exhausted and broken by the weight of millennia.`
+        fragments: {
+            en: {
+                short: window.repeat(TEXTS.en.base, 1).slice(0, 1800),
+                medium: window.repeat(TEXTS.en.base, 2).slice(0, 3000),
+                long: window.repeat(TEXTS.en.base, 3)
             },
-            {
-                title: "Bridge Oath (Inspired)",
-                text: `The bridge was heavy. Heavier than the wood and iron it was made of. Heavy with the lives of the men who had died carrying it before him, and with the lives of those who would die today. Kaladin clenched his teeth, feeling the rough wood dig into his calloused shoulder. Sweat ran down his forehead, stinging his eyes, but he couldn’t let go to wipe it. Run. He could only run.\n\n"Up!" Gaz shouted from behind, his voice full of contempt and cruelty.\n\nIn unison, Bridge Four lifted the massive structure. Kaladin felt the familiar creak in his knees, the sharp pain in his back. But he didn't falter. He couldn't afford to falter. Around him, the other men panted and grunted, their faces masks of despair and effort. Rock, Teft, Moash... they all shared the same burden, the same fate. To be arrow fodder for the Alethi armies, tallow to distract the Parshendi while the real soldiers crossed the chasms.`
+            es: {
+                short: window.repeat(TEXTS.es.base, 1).slice(0, 2000),
+                medium: window.repeat(TEXTS.es.base, 2).slice(0, 3500),
+                long: window.repeat(TEXTS.es.base, 3)
             }
-        ]
-    }
-};
+        }
+    };
+
+    // Fill others
+    const extraLangs = ['zh', 'hi', 'fr', 'ar', 'bn', 'ru', 'pt', 'ur'];
+    extraLangs.forEach(lang => {
+        window.SagaContent.fragments[lang] = window.SagaContent.fragments.en;
+    });
+
+})();

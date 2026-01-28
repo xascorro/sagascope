@@ -1,27 +1,36 @@
-/* Cosmere Theme */
+/* Cosmere Theme - Modern Refactor */
 :root {
-    --text-primary: #e6eefb;
-    --text-secondary: #8b949e;
+    /* Brand Colors */
     --accent-color: #58a6ff;
     /* Stormlight Blue */
+    --accent-glow: rgba(88, 166, 255, 0.3);
+
+    /* Text Overrides */
+    --text-primary: #e6eefb;
+    --text-secondary: #8b949e;
+
+    /* Background Tint */
+    --bg-color: #0b1015;
+    /* Deep void blue-black */
+    --bg-card: rgba(13, 17, 23, 0.6);
+    --border-color: rgba(56, 139, 253, 0.15);
+
+    /* Fonts */
     --font-ui: 'Inter', system-ui, sans-serif;
     --font-read: 'Merriweather', serif;
-    --glass-bg: rgba(13, 17, 23, 0.7);
-    --glass-border: rgba(56, 139, 253, 0.3);
 }
 
-body {
-    /* Background set by JS logic referencing assets/bg.png */
+/* Specific Identity Elements */
+h1 {
+    background: linear-gradient(135deg, #1f6feb 0%, #a371f7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 20px rgba(56, 139, 253, 0.2));
 }
 
-h1,
-h2 {
-    color: #a371f7;
-    /* Void/Storm mix */
-    text-shadow: 0 0 10px rgba(163, 113, 247, 0.5);
-}
-
-button {
+/* Stormlight-specific button tweak if needed, 
+   otherwise core pill style applies with accent color */
+button.primary-action {
     background: linear-gradient(135deg, #1f6feb, #58a6ff);
-    box-shadow: 0 0 15px rgba(31, 111, 235, 0.3);
+    box-shadow: 0 4px 20px rgba(31, 111, 235, 0.4);
 }

@@ -1,47 +1,55 @@
-/* Reina Roja Theme */
+/* Reina Roja Theme - Modern Refactor */
 :root {
-    --text-primary: #ededed;
-    --text-secondary: #ff3333;
-    /* Red accents */
+    /* Brand Colors */
     --accent-color: #ff0000;
     /* Pure Red */
-    --glass-bg: rgba(0, 0, 0, 0.9);
-    --glass-border: rgba(255, 0, 0, 0.5);
-    --font-ui: 'Segoe UI', Roboto, Helvetica, sans-serif;
-    /* Modern, clean */
-    --font-read: 'Roboto', sans-serif;
-    /* Sans-serif for thriller vibe */
-}
+    --accent-glow: rgba(255, 0, 0, 0.3);
 
-h1,
-h2,
-button {
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-weight: 800;
+    /* Text Overrides */
+    --text-primary: #ededed;
+    --text-secondary: #ff3333;
+
+    /* Background Tint */
+    --bg-color: #050505;
+    /* Blackest black */
+    --bg-card: rgba(10, 10, 10, 0.9);
+    --border-color: #333;
+
+    /* Fonts */
+    --font-ui: 'Segoe UI', Roboto, sans-serif;
+    --font-read: 'Roboto', sans-serif;
+
+    --radius-md: 0;
+    /* Sharp thriller edges */
+    --radius-pill: 0;
 }
 
 h1 {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 900;
     color: #fff;
     border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 4px;
     display: inline-block;
 }
 
-button {
+.glass-panel {
+    border-left: 4px solid var(--accent-color);
+    /* Signature Red Line */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+button.primary-action {
     background: #000;
     border: 1px solid var(--accent-color);
     color: var(--accent-color);
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+    text-transform: uppercase;
+    font-weight: 700;
 }
 
-button:hover {
+button.primary-action:hover {
     background: var(--accent-color);
     color: #000;
-}
-
-.glass-panel {
-    border-radius: 0;
-    /* Sharp edges */
-    border: 1px solid #333;
-    border-left: 4px solid var(--accent-color);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
 }

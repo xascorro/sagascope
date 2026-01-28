@@ -1,35 +1,49 @@
-/* LOTR Theme */
+/* LOTR Theme - Modern Refactor */
+@import url('https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy:wght@400&display=swap');
+
 :root {
-    --text-primary: #fffce1;
-    /* Parchment/Light Gold */
-    --text-secondary: #a3cfa3;
-    /* Elven Greenish */
+    /* Brand Colors */
     --accent-color: #4a6741;
-    /* Forest Green */
-    --glass-bg: rgba(20, 30, 20, 0.85);
-    --glass-border: rgba(212, 175, 55, 0.3);
-    /* Gold Tint */
+    /* Elven Green */
+    --accent-glow: rgba(74, 103, 65, 0.4);
+
+    /* Text Overrides */
+    --text-primary: #fffce1;
+    /* Parchment */
+    --text-secondary: #c2d6c2;
+
+    /* Background Tint */
+    --bg-color: #141a14;
+    --bg-card: rgba(20, 30, 20, 0.6);
+    --border-color: rgba(212, 175, 55, 0.3);
+    /* Gold light border */
+
+    /* Fonts */
     --font-ui: 'Sorts Mill Goudy', serif;
     --font-read: 'Garamond', serif;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy:wght@400&display=swap');
-
-h1,
-h2 {
+h1 {
     font-family: 'Sorts Mill Goudy', serif;
     font-style: italic;
     color: #ffd700;
+    /* Gold */
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
 }
 
-button {
-    background: #4a6741;
-    border: 1px solid #ffd700;
-    font-family: 'Sorts Mill Goudy', serif;
-}
-
+/* Rustic borders */
 .glass-panel {
-    border-radius: 4px;
-    /* More rustic/ancient feel */
-    border: 2px double #556b2f;
+    border-style: double;
+    border-width: 3px;
+}
+
+button.primary-action {
+    background: #2e4026;
+    border: 1px solid #ffd700;
+    color: #fffce1;
+}
+
+button.primary-action:hover {
+    background: #4a6741;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
 }
